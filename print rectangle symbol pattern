@@ -1,0 +1,32 @@
+public class RectanglePattern {
+    public static void printRectanglePattern(int rows, int cols, char symbol) {
+        // Print the top border
+        for (int i = 0; i < cols; i++) {
+            System.out.print(symbol);
+        }
+        System.out.println();
+
+        // Print the middle rows
+        for (int i = 0; i < rows - 2; i++) {
+            System.out.print(symbol);
+            for (int j = 0; j < cols - 2; j++) {
+                System.out.print(' ');
+            }
+            System.out.print(symbol);
+            System.out.println();
+        }
+
+        // Print the bottom border
+        for (int i = 0; i < cols; i++) {
+            System.out.print(symbol);
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        int rows = 5;
+        int cols = 10;
+        char symbol = '*';
+        printRectanglePattern(rows, cols, symbol);
+    }
+}
