@@ -1,0 +1,31 @@
+class MultiplicationTableThread extends Thread {
+    int number;
+
+    MultiplicationTableThread(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Thread " + number + " is running...");
+        for (int i = 1; i <= 10; i++) {
+            System.out.println(number + " * " + i + " = " + number * i);
+        }
+        System.out.println("Thread " + number + " is finished.");
+    }
+}
+
+public class MainClass {
+    public static void main(String[] args) {
+        System.out.println("Main thread is starting...");
+
+        MultiplicationTableThread thread5 = new MultiplicationTableThread(5);
+        MultiplicationTableThread thread10 = new MultiplicationTableThread(10);
+
+        System.out.println("Thread 5 is in new state.");
+        System.out.println("Thread 10 is in new state.");
+
+        thread5.start();
+        thread10.start();
+
+        System.out.println("Main thread is finished
