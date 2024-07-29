@@ -1,0 +1,73 @@
+import java.util.Scanner;
+
+public class ATM {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the denomination priority (2000, 500, 200, 100):");
+        System.out.println("1. 2000");
+        System.out.println("2. 500");
+        System.out.println("3. 200");
+        System.out.println("4. 100");
+
+        int priority = scanner.nextInt();
+
+        System.out.println("Enter the total number of notes for each denomination:");
+        int[] notes = new int[4];
+
+        for (int i = 0; i < 4; i++) {
+            switch (i) {
+                case 0:
+                    System.out.println("2000:");
+                    break;
+                case 1:
+                    System.out.println("500:");
+                    break;
+                case 2:
+                    System.out.println("200:");
+                    break;
+                case 3:
+                    System.out.println("100:");
+                    break;
+            }
+            notes[i] = scanner.nextInt();
+        }
+
+        int[] denominations = {2000, 500, 200, 100};
+        int totalAmount = 0;
+
+        switch (priority) {
+            case 1:
+                totalAmount = calculateAmount(notes, denominations);
+                break;
+            case 2:
+                totalAmount = calculateAmount(swap(notes, 0, 1), swap(denominations, 0, 1));
+                break;
+            case 3:
+                totalAmount = calculateAmount(swap(notes, 0, 2), swap(denominations, 0, 2));
+                break;
+            case 4:
+                totalAmount = calculateAmount(swap(notes, 0, 3), swap(denominations, 0, 3));
+                break;
+            default:
+                System.out.println("Invalid priority");
+        }
+
+        System.out.println("Total available balance: " + totalAmount);
+    }
+
+    private static int calculateAmount(int[] notes, int[] denominations) {
+        int totalAmount = 0;
+        for (int i = 0; i < notes.length; i++) {
+            totalAmount += notes[i] * denominations[i];
+        }
+        return totalAmount;
+    }
+
+    private static int[] swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+        return array;
+    }
+}
