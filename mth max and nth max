@@ -1,0 +1,23 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {12, 4, 5, 6, 7, 3, 1, 15, 10};
+        int m = 2; // Mth maximum number
+        int n = 3; // Nth minimum number
+
+        int[] sortedArray = Arrays.copyOf(array, array.length);
+        Arrays.sort(sortedArray);
+
+        int mthMax = sortedArray[sortedArray.length - m];
+        int nthMin = sortedArray[n - 1];
+
+        int sum = mthMax + nthMin;
+        int difference = mthMax - nthMin;
+
+        System.out.println("Mth maximum number: " + mthMax);
+        System.out.println("Nth minimum number: " + nthMin);
+        System.out.println("Sum: " + sum);
+        System.out.println("Difference: " + difference);
+    }
+}
