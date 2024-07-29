@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class PrimeNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the value of n: ");
+        int n = scanner.nextInt();
+
+        int count = 0;
+        int primeNumber = 1;
+        while (count < n) {
+            primeNumber++;
+            if (isPrime(primeNumber)) {
+                count++;
+            }
+        }
+
+        System.out.println("The " + n + "th prime number is " + primeNumber);
+
+        System.out.print("Enter the number of prime numbers to print after the " + n + "th prime number: ");
+        int k = scanner.nextInt();
+
+        int i = 0;
+        while (i < k) {
+            primeNumber++;
+            if (isPrime(primeNumber)) {
+                System.out.print(primeNumber + " ");
+                i++;
+            }
+        }
+    }
+
+    public static boolean isPrime(int number) {
+        if (number < 2) {
+            return false;
+        }
+        for (int i = 2; i * i <= number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
